@@ -1,0 +1,31 @@
+﻿@model Book
+@{
+    int order = 1;
+}
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Review</th>
+            <th>Action</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.BookReviews)
+        {
+            <tr>
+                <th>@(++order)</th>
+                <td>@item.AppUser.FullName</td>
+                <td>@item.Text</td>
+                <td>
+                    <a asp-action="accepted" asp-route-id="@item.Id"  class="btn btn-warning">Accepted</a>
+                    <a asp-action="Rejected" asp-route-id="@item.Id" class="btn btn-danger" style="color:white">Rejected</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
